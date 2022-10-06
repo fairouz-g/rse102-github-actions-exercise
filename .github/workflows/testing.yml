@@ -34,3 +34,14 @@ jobs:
         with:
           name: "Gen Coverage file"
           path: .coverage
+  coverage_report:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+      - uses: actions/download-artifact@v3
+        with:
+          name: "Gen Coverage file"
+      - name: "Convert to xml"
+        run: coverage xml
