@@ -20,10 +20,10 @@ jobs:
         with:
           python-version: '3.10.6'
       - name: "pytest Install"
-      - run: pip install pytest
+        run: pip install pytest
       - name: "Coverage Install"
-      - run: pip install coverage
+        run: pip install coverage
       - name: "Run Test"
-      - run: coverage run -m pytest
+        run: coverage run -m pytest
       - name: "Generate Coverage Report"
-      - run:  coverage report -m
+        run:  coverage report -m
