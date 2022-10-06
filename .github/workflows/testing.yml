@@ -32,7 +32,7 @@ jobs:
       - name: "Upload Coverage Report"
         uses: actions/upload-artifact@v3
         with:
-          name: "Gen Coverage file"
+          name: "Coverage_file"
           path: .coverage
   coverage_report:
     needs: test
@@ -40,8 +40,15 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
+      - name: "Download artifact"
       - uses: actions/download-artifact@v3
         with:
-          name: "Gen Coverage file"
-      - name: "Convert to xml"
-        run: coverage xml
+          name: "Coverage_file"
+      - name: "Coverage Install"
+        run: pip install coverage
+      - name: "Coverage Generate"
+        run: coverage report -m
+        uses: actions/upload-artifact@v3
+        with:
+          name: "xml file"
+          path: coverage.xml
