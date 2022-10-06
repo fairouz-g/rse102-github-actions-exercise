@@ -17,7 +17,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
-      - uses: actions/upload-artifact@v3
         with:
           python-version: '3.10.6'
       - name: "numpy Install"
@@ -30,5 +29,8 @@ jobs:
         run: pip install coverage
       - name: "Run Test"
         run: coverage run -m pytest
-      - name: "Generate Coverage Report"
-        run:  coverage report -m > Report.Coverage
+      - name: "Upload Coverage Report"
+      - uses: actions/upload-artifact@v3
+        with:
+          -name: "Gen Coverage file"
+          run: .coverage
