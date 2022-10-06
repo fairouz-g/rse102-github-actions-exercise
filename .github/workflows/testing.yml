@@ -11,7 +11,7 @@ jobs:
       - name: "Install style checker"
         run: pip install black
       - name: "Run style check"
-        run: black --check .
+        run: black --check . 
   test:
     runs-on: ubuntu-latest
     steps:
@@ -26,4 +26,4 @@ jobs:
       - name: "Run Test"
       - run: coverage run -m pytest
       - name: "Generate Coverage Report"
-        run:  coverage report -m
+      - run:  coverage report -m
